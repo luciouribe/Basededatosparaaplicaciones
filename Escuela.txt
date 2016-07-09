@@ -1,0 +1,116 @@
+Consulta 1
+***************************************************************
+
+select nombreAlumno, apAlumno, amAlumno from alumnos where idAlumno IN
+(select idAlumno from agrupaciones where idMateria IN 
+(select idMateria from materias  where nombreMateria = 'INGL?S I') and idPeriodo IN
+(select idTipoPeriodo from periodos where nombrePeriodo = 'Enero-Abril-2010') and idAgrupacion IN
+(select idAgrupacion from calificacionesAlumnos where 
+(calificacionTrabajos + calificacionAsistencias + calificacionCompetencias + calificacionTrabajoEnClase + calificacionDelParcial)/5 >=8 and 
+(calificacionTrabajos + calificacionAsistencias + calificacionCompetencias + calificacionTrabajoEnClase + calificacionDelParcial)/5 <=8.5))
+****************************************************************
+
+Consulta 2
+***************************************************************
+
+
+SELECT nombreAlumno, apAlumno, amAlumno FROM alumnos WHERE idTipoAlumno IN 
+( SELECT idTipoAlumno FROM tipoAlumno WHERE tipoAlumno =  'Ingeniero') and
+idAlumno IN (select idAlumno from agrupaciones where idperiodo IN (select idTipoPeriodo from periodos where nombrePeriodo = 'Enero-Abril-2011') and idGrupo IN 
+(select idGrupo from grupos where nombreGrupo = '1TIC6'))
+
+***************************************************************
+
+
+consulta 3
+
+***************************************************************
+
+select nombreAlumno, apAlumno, amAlumno from alumnos where idTipoAlumno IN (select idTipoAlumno from tipoAlumno where tipoAlumno = 'TSU') and
+idAlumno IN 
+(select idAlumno from agrupaciones where idAgrupacion IN 
+(select idAgrupacion from asistencias where idTipoAsistencia IN 
+(select idTipoAsistencia from tipoAsistencias where tipoAsistencia = 'falta') and fecha = '2012-01-20'))
+***************************************************************
+
+consulta 4 
+
+***************************************************************
+
+select nombreAlumno, apAlumno, amAlumno from alumnos where idTipoAlumno IN 
+(select idTipoAlumno from tipoAlumno where tipoAlumno = 'Ingeniero') and idAlumno IN 
+(select idAlumno from agrupaciones where idAgrupacion IN 
+(select idAgrupacion from horarios where HOUR(horaInicio) BETWEEN 17 and 20)) 
+
+***************************************************************
+
+
+consulta 5 
+
+***************************************************************
+
+select nombreAlumno, apAlumno, amAlumno from alumnos where idTipoAlumno
+IN (select idTipoAlumno from tipoAlumno where tipoAlumno = 'Ingeniero') and idAlumno 
+IN (select idAlumno from agrupaciones where idMateria IN
+(select idMateria from materias where nombreMateria = 'Algebra') and idAgrupacion IN 
+(select idAgrupacion from calificacionesAlumnos where (calificacionTrabajos + calificacionAsistencias + calificacionCompetencias + calificacionTrabajoEnClase + calificacionDelParcial)/5 <8 ))
+***************************************************************
+
+consulta 6 
+
+***************************************************************
+
+select nombreAlumno, apAlumno, amAlumno from alumnos where idTipoAlumno IN (select idTipoAlumno from tipoAlumno where tipoAlumno = 'TSU') and idAlumno IN 
+(select idAlumno from agrupaciones where idMateria IN 
+(select idMateria from materias where nombreMateria = 'HABILIDADES L?GICO MATEM?TICO II') and idPeriodo IN 
+(select idTipoPeriodo from periodos where nombrePeriodo = 'Mayo-Agosto-2013')) and idAlumno IN 
+(select idAlumno from asistencias where idTipoAsistencia IN 
+(select idTipoAsistencia from tipoAsistencias where tipoAsistencia = 'falta' >=2 AND tipoAsistencia =  'falta' <=5 and tipoAsistencia =  'retardo'>2))
+
+***************************************************************
+
+consulta 7
+
+***************************************************************
+
+select nombreAlumno, apAlumno, amAlumno from alumnos where idTipoAlumno
+IN (select idTipoAlumno from tipoAlumno where tipoAlumno = 'Ingeniero') and idAlumno 
+IN (select idAlumno from agrupaciones where idMateria 
+IN (select idMateria from materias where nombreMateria = 'INGL?S I'))
+
+***************************************************************
+
+
+consulta 9 
+***************************************************************
+
+
+***************************************************************
+
+consulta 10 
+
+***************************************************************
+
+
+consulta 11
+
+***************************************************************
+
+select nombreGrupo from grupos where idGrupo IN 
+(select idGrupo from agrupaciones where idAgrupacion IN 
+(select idAgrupacion from calificacionesAlumnos where (calificacionTrabajos + calificacionAsistencias + calificacionCompetencias + calificacionTrabajoEnClase + calificacionDelParcial)/5 = 10) and idMateria IN (1, 3, 5) and idPeriodo IN 
+(select idTipoPeriodo from periodos where nombrePeriodo LIKE '%2010'))
+***************************************************************
+
+
+consulta 12  
+
+***************************************************************
+
+
+
+
+
+
+
+
